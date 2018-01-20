@@ -64,7 +64,6 @@ function Cell(row, col) {
             stroke(104, 67, 98)
             strokeWeight(3)
             translate(this.x, this.y);
-            rectMode(CENTER)
             polygon(0, 0, cellRadius, 6);
             pop();
 
