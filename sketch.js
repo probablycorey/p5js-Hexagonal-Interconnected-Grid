@@ -2,7 +2,7 @@ var screenWidth = 800;
 var screenHeight = 400;
 var cols = 7;
 var rows = 7;
-var cellSize = 15;
+var cellRadius = 100;
 var grid = [];
 var xOffset = 200;
 var yOffset = 50;
@@ -38,19 +38,19 @@ function Cell(row, col) {
     this.col = col;
 
     if(row % 2 === 0) {
-        this.x = this.col * cellSize * 3 + xOffset;
+        this.x = this.col * cellRadius * 3 + xOffset;
     } else {
-        this.x = this.col * cellSize * 3 + cellSize * 1.5 + xOffset;
+        this.x = this.col * cellRadius * 3 + cellRadius * 1.5 + xOffset;
     }
-    this.y = this.row * cellSize * 3 + yOffset;
+    this.y = this.row * cellRadius * 2.75 + yOffset;
 
     // Define the corners
-    this.topLeft = createVector(this.x - cellSize / 2, this.y - cellSize);
-    this.topRight = createVector(this.x + cellSize / 2, this.y - cellSize);
-    this.bottomLeft = createVector(this.x - cellSize / 2, this.y + cellSize);
-    this.bottomRight = createVector(this.x + cellSize / 2, this.y + cellSize);
-    this.middleLeft = createVector(this.x - cellSize, this.y);
-    this.middleRight = createVector(this.x + cellSize, this.y);
+    this.topLeft = createVector(this.x - cellRadius / 2, this.y - cellRadius);
+    this.topRight = createVector(this.x + cellRadius / 2, this.y - cellRadius);
+    this.bottomLeft = createVector(this.x - cellRadius / 2, this.y + cellRadius);
+    this.bottomRight = createVector(this.x + cellRadius / 2, this.y + cellRadius);
+    this.middleLeft = createVector(this.x - cellRadius, this.y);
+    this.middleRight = createVector(this.x + cellRadius, this.y);
 
     this.active = true;
     
@@ -65,7 +65,7 @@ function Cell(row, col) {
             strokeWeight(3)
             translate(this.x, this.y);
             rectMode(CENTER)
-            polygon(0, 0, cellSize, 6);
+            polygon(0, 0, cellRadius, 6);
             pop();
 
             fill(255, 0, 0);
