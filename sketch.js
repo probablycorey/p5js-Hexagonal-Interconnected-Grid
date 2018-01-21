@@ -2,7 +2,7 @@ var screenWidth = 800;
 var screenHeight = 400;
 var cols = 7;
 var rows = 7;
-var cellRadius = 100;
+var cellRadius = 10;
 var grid = [];
 var xOffset = 200;
 var yOffset = 50;
@@ -14,7 +14,6 @@ function setup () {
         var newRow = [];
         for(col = 0; col < cols - row % 2; col++) {
             var cell = new Cell(row, col);
-            cell.active = random(1) > 0.2;
             newRow.push(cell);
         }
         grid.push(newRow);
@@ -37,12 +36,13 @@ function Cell(row, col) {
     this.row = row;
     this.col = col;
 
-    if(row % 2 === 0) {
-        this.x = this.col * cellRadius * 3 + xOffset;
-    } else {
-        this.x = this.col * cellRadius * 3 + cellRadius * 1.5 + xOffset;
+    this.x = (this.col + 1) * cellRadius * 4 + xOffset;
+
+    if(this.row % 2 != 0) {
+        this.x += 2 * cellRadius;
     }
-    this.y = this.row * cellRadius * 2.75 + yOffset;
+
+    this.y = this.row * cellRadius * 4 + yOffset;
 
     // Define the corners
     this.topLeft = createVector(this.x - cellRadius / 2, this.y - cellRadius);
